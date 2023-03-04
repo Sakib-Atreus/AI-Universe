@@ -68,5 +68,14 @@ const showAll = async () => {
     buttonShow.classList.add('d-none');
 }
 
+// Universe Details Function 
+const loadUniverseDetails = async id => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayUniverseDetails(data.data);
+    // console.log(data.data);
+}
+
 // Load Universe
 loadUniverse();
