@@ -77,5 +77,59 @@ const loadUniverseDetails = async id => {
     // console.log(data.data);
 }
 
+// Universe Details Display Function
+const displayUniverseDetails = universe =>{
+    console.log(universe.description);
+    const universeDetails =  document.getElementById('single-modal-body');
+    universeDetails.innerHTML = `
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card p-3 bg-light border-2">
+                <h4 class="">${universe.description}</h4>
+                <div class="card-body d-flex justify-content-around text-center">
+                    <div class="bg-danger p-2 rounded-2">
+                        <p>${universe.pricing[0].price ? universe.pricing[0].price : 'Free'}<br><span>${universe.pricing[0].plan ? universe.pricing[0].plan : 'Cost'}</span></p>
+                    </div>
+                    <div class="bg-warning p-2 rounded-2">
+                        <p>${universe.pricing[1].price ? universe.pricing[1].price : 'Free'}<br><span>${universe.pricing[1].plan ? universe.pricing[1].plan : 'Cost'}</span></p>
+                    </div>
+                    <div class="bg-info p-2 rounded-2">
+                        <p>${universe.pricing[2].price ? universe.pricing[2].price : 'Free'}<br><span>${universe.pricing[2].plan ? universe.pricing[2].plan : 'Cost'}</span></p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="pe-5 col-6">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>${universe.features[1].feature_name ? universe.features[1].feature_name : 'No Data Found'}</li>
+                            <li>${universe.features[2].feature_name ? universe.features[2].feature_name : 'No Data Found'}</li>
+                            <li>${universe.features[3].feature_name ? universe.features[3].feature_name : 'No Data Found'}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Integrations</h4>
+                        <ul>
+                            <li>${universe.integrations[0] ? universe.integrations[0] : 'No Data Found'}</li>
+                            <li>${universe.integrations[1] ? universe.integrations[1] : 'No Data Found'}</li>
+                            <li>${universe.integrations[2] ? universe.integrations[2] : 'No Data Found'}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="${universe.image_link[0]}" class="card-img-top" alt="...">
+                <button class="btn btn-warning me-2 mt-2 position-absolute top-0 end-0 w-25">${universe.accuracy.score ? universe.accuracy.score * 100 + '% accuracy' : ' '}</button>
+                <div class="card-body">
+                    <h5 class="card-title">${universe.input_output_examples[0].input ? universe.input_output_examples[0].input : 'No Data Found'} </h5>
+                    <p class="card-text">${universe.input_output_examples[0].output ? universe.input_output_examples[0].output : 'No Data Found'}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
 // Load Universe
 loadUniverse();
