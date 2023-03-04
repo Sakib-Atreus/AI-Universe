@@ -57,5 +57,16 @@ const toggleSpinner = isLoading => {
     }
 }
 
+// Show All Button Function
+const showAll = async () => {
+    toggleSpinner(true);
+    const url = `https://openapi.programming-hero.com/api/ai/tools`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayUniverse(data.data.tools);
+    const buttonShow = document.getElementById('btn-show-all');
+    buttonShow.classList.add('d-none');
+}
+
 // Load Universe
 loadUniverse();
